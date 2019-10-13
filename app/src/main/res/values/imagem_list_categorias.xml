@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="imagemListCategorias"  >
+        <item >@drawable/ic_outros</item>
+        <item >@drawable/ic_alimentos</item>
+        <item >@drawable/ic_bebidas </item>
+        <item >@drawable/ic_biscoitos</item>
+        <item >@drawable/ic_carnes</item>
+        <item >@drawable/ic_congelados</item>
+        <item >@drawable/ic_enlatados</item>
+        <item >@drawable/ic_doces</item>
+        <item >@drawable/ic_frutas</item>
+        <item >@drawable/ic_higiene_pessoal</item>
+        <item >@drawable/ic_laticinios</item>
+        <item >@drawable/ic_massas</item>
+        <item >@drawable/ic_pao</item>
+        <item >@drawable/ic_produtos_limpeza</item>
+    </array>
+</resources>

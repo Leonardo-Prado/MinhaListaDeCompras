@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="unidades">
+        <item>unidade</item>
+        <item>Kg</item>
+        <item>caixa</item>
+        <item>grama</item>
+        <item>litro</item>
+        <item>peça</item>
+        <item>metro</item>
+        <item>duzia</item>
+    </string-array>
+</resources>

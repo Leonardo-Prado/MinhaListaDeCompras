@@ -1,0 +1,51 @@
+<resources>
+    <!--APP-->
+    <string name="app_name">Minha Lista de Compras</string>
+
+    <!--Login-->
+    <string name="title_activity_login">Entre</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entre ou Registre-se</string>
+    <string name="action_sign_in_short">Entre</string>
+    <string name="welcome">"Bem Vindo !"</string>
+    <string name="invalid_username">Esse não é um email valido</string>
+    <string name="invalid_password">A senha deve ter mais de 5 caracteres</string>
+    <string name="login_failed">"Falha ao logar"</string>
+    <!--Login Activity-->
+    <string name="login_activity_falha_ao_auth">Falha ao autenticar, verifique a senha.</string>
+    <string name="login_activity_falha_ao_criar_usuario">Falha ao criar usuario.</string>
+    <!--Tela Principal-->
+    <string name="title_activity_tela_principal">Minha Lista de Compras</string>
+    <string name="tv_progress_status_info_carregando">Carregando</string>
+    <!--bottom Menu-->
+    <string name="menu_bottom_menu_item_despensa">Despensa</string>
+    <string name="menu_bottom_menu_item_lista">Minhas Listas</string>
+    <string name="menu_bottom_menu_item_buscar_lista">Procurar Lista Online</string>
+    <string name="menu_bottom_menu_item_novo_item">Novo Item</string>
+    <!--Fragment Lista-->
+    <string name="fragment_lista_dialog_add_lista_titulo">Dê um nome para a sua nova lista</string>
+    <!--Dialog Add Lista-->
+    <string name="dialog_add_lista_ednome_hint">Nome da sua lista...</string>
+    <string name="dialog_add_lista_eddescricao_hint">Descrição...</string>
+    <string name="dialog_add_lista_botao_criar_texto">Criar</string>
+    <!--Rv Lista de Compras-->
+    <string name="rv_lista_de_compras_cv_tv_nome">Nome: </string>
+    <string name="rv_lista_de_compras_cv_tv_descricao">Descricao: </string>
+    <string name="rv_lista_de_compras_cv_tv_data_criacao">Data de Criação: </string>
+    <string name="rv_lista_de_compras_cv_tv_criador">Criada Por: </string>
+    <string name="rv_lista_de_compras_cv_btn_novo_item">Novo Item</string>
+    <string name="rv_lista_de_compras_tv_itens_titulo">Minha Lista</string>
+    <!--Rv Itens Lista de Compras-->
+    <string name="rv_lista_de_compras_itens_cv_tv_nome">Item: </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_quantidade">Quantidade: </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_descricao">Descricao: </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_preco">Preço... </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_categoria">Categoria: </string>
+    <string name="rv_lista_de_compras_itens_cv_cb_concluido">Concluido! </string>
+    <!--Dialog novo Item-->
+    <string name="dialog_novo_Item_editem_hint">Item...</string>
+    <string name="dialog_novo_Item_eddescricao_hint">Descrição...</string>
+    <string name="dialog_novo_Item_edquantidade_hint">Quantidade...</string>
+    <string name="dialog_novo_Item_botao_add_texto">Adicionar</string>
+</resources>

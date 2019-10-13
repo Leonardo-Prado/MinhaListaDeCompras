@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/menu_bottom_menu_item_lista"
+            android:id="@+id/menu_item_home"
+            android:icon="@drawable/ic_lista_carrinho"
+            android:checked="true">
+
+        </item>
+        <item
+            android:title="@string/menu_bottom_menu_item_buscar_lista"
+            android:icon="@drawable/ic_lupa"
+            android:id="@+id/menu_buscar_lista">
+        </item>
+        <item
+            android:title="@string/menu_bottom_menu_item_despensa"
+            android:icon="@drawable/ic_despensa"
+            android:id="@+id/menu_item_dispensa"
+            android:visible="false">
+        </item>
+        <!--<item
+            android:title="@string/menu_bottom_menu_item_novo_item"
+            android:id="@+id/menu_novo_item">
+        </item>-->
+    </group>
+</menu>
