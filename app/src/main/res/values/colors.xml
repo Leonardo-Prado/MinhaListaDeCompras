@@ -9,4 +9,10 @@
     <color name="colorSecundaryDark">#005000</color>
     <color name="colorSecundaryLight">#55b75a</color>
     <color name="color_cinza">#DDDDDD</color>
+    <color name="branco">#FFFFFF</color>
+    <color name="item_concluido">#9909880d</color>
+    <color name="item_nao_concluido">#99AA090d</color>
+    <color name="estrela_completa">#DEDE00</color>
+    <color name="estrela_meia">#D1D100</color>
+    <color name="estrela_vazia">#77555500</color>
 </resources>

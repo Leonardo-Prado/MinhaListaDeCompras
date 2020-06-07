@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="imgTipoLista">
+        <item >@drawable/img_lista_compras</item>
+        <item >@drawable/img_lista_compras1</item>
+        <item >@drawable/img_lista_compras2</item>
+        <item >@drawable/img_churrasco</item>
+        <item >@drawable/img_aniversario</item>
+        <item >@drawable/img_bolo</item>
+        <item >@drawable/img_cafe_manha</item>
+    </array>
+</resources>

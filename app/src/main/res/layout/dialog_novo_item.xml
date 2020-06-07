@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:dropDownHeight="220dp"
         android:ems="10"
         android:hint="@string/dialog_novo_Item_editem_hint"
         android:inputType="textPersonName" />
@@ -47,6 +48,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:dropDownWidth="match_parent" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -56,13 +58,14 @@
 
         <Spinner
             android:id="@+id/spCategoria"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
+            style="@android:style/Widget.DeviceDefault.Light.Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:dropDownWidth="match_parent" />
+
     </LinearLayout>
 
     <Button

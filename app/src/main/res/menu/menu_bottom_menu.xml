@@ -22,7 +22,7 @@
             android:id="@+id/menu_item_dispensa"
             android:visible="false">
         </item>
-        <!--<item
+       <!-- <item
             android:title="@string/menu_bottom_menu_item_novo_item"
             android:id="@+id/menu_novo_item">
         </item>-->

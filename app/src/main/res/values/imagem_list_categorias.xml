@@ -15,5 +15,18 @@
         <item >@drawable/ic_massas</item>
         <item >@drawable/ic_pao</item>
         <item >@drawable/ic_produtos_limpeza</item>
+        <item >@drawable/ic_tempero</item>
+        <item >@drawable/ic_frango</item>
+        <item >@drawable/ic_banana</item>
+        <item >@drawable/ic_maca</item>
+        <item >@drawable/ic_laranja</item>
+        <item >@drawable/ic_refrigerante</item>
+        <item >@drawable/ic_uva</item>
+        <item >@drawable/ic_cafe</item>
+        <item >@drawable/ic_bolo</item>
+        <item >@drawable/ic_queijo</item>
+
+
+
     </array>
 </resources>

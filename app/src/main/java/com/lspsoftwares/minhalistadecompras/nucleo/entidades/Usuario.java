@@ -1,6 +1,7 @@
 package com.lspsoftwares.minhalistadecompras.nucleo.entidades;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Usuario {
@@ -8,7 +9,9 @@ public class Usuario {
     private String nome;
     private String email;
     private boolean downloadListaItem;
+    private HashMap<String,Double> listasClassificadas = new HashMap<>();
     private List<String> listas = new ArrayList<>();
+    private List<Compras> compras = new ArrayList<>();
 
     public Usuario() {    }
 
@@ -59,5 +62,20 @@ public class Usuario {
 
     public void setDownloadListaItem(boolean downloadListaItem) {
         this.downloadListaItem = downloadListaItem;
+    }
+
+    public HashMap<String, Double> getListasClassificadas() {
+        return listasClassificadas;
+    }
+
+    public void setListasClassificadas(HashMap<String, Double> listasClassificadas) {
+        this.listasClassificadas = listasClassificadas;
+    }
+    public List<Compras> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compras> compras) {
+        this.compras = compras;
     }
 }

@@ -1,13 +1,20 @@
 package com.lspsoftwares.minhalistadecompras.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,45 +33,113 @@ import java.util.regex.Pattern;
 
 import com.lspsoftwares.minhalistadecompras.R;
 import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Usuario;
+import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
+import com.lspsoftwares.minhalistadecompras.ui.anonimo_ui.TelaPrincipalAnonimo;
+import com.lspsoftwares.minhalistadecompras.ui.firebase_ui.TelaPrincipal;
 
 public class Login  extends AppCompatActivity {
     private EditText edEmail;
     private EditText edSenha;
     private Button btnEntrar;
+    private Button btnEntrarAnonimamente;
     private FirebaseAuth auth;
     private Resources resources;
+    private TextView tvOfflineMsg;
+    private TextView tvInfo;
+    ProgressBar loading;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        resources = Login.this.getResources();
+        loading = findViewById(R.id.loading);
+        loading.setVisibility(View.GONE);
+        resources = getResources();
+        btnEntrarAnonimamente = findViewById(R.id.btnEntrarAnonimo);
+        context = this;
+        tvOfflineMsg = findViewById(R.id.tvOfflineMsg);
+        tvInfo = findViewById(R.id.tvInfo);
         edEmail = findViewById(R.id.edEmail);
         edSenha = findViewById(R.id.edSenha);
         btnEntrar = findViewById(R.id.btnEntrar);
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(!(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED || connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)) {
+            edEmail.setVisibility(View.GONE);
+            edSenha.setVisibility(View.GONE);
+            btnEntrar.setVisibility(View.GONE);
+            tvInfo.setVisibility(View.INVISIBLE);
+            tvOfflineMsg.setVisibility(View.VISIBLE);
+        }
         auth = FirebaseAuth.getInstance();
-        edEmail.setOnKeyListener(new View.OnKeyListener() {
+        edEmail.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 habilitaBotao();
-                return false;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                habilitaBotao();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                habilitaBotao();
             }
         });
-        edSenha.setOnKeyListener(new View.OnKeyListener() {
+        edSenha.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 habilitaBotao();
-                return false;
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                habilitaBotao();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                habilitaBotao();
             }
         });
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logarComFirebase(edEmail.getText().toString(),edSenha.getText().toString());
+                loading.setVisibility(View.VISIBLE);
+                Toast.makeText(context,resources.getString(R.string.login_conectando_servidor),Toast.LENGTH_LONG).show();
+                logarComFirebase(edEmail.getText().toString(), edSenha.getText().toString());
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                VariaveisEstaticas.reset();
+
             }
         });
-        
-        
+        btnEntrarAnonimamente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logarAnonimamente();
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                VariaveisEstaticas.reset();
 
+            }
+        });
+    }
+
+    private void logarAnonimamente() {
+        Toast.makeText(context,resources.getString(R.string.login_efetuando),Toast.LENGTH_LONG).show();
+        loading.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(Login.this, TelaPrincipalAnonimo.class);
+        intent.putExtra("email","anonimo@anonimo.com");
+        intent.putExtra("uid","AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        startActivity(intent);
+        loading.setVisibility(View.GONE);
+        finish();
+    }
+
+    private void finalizar() {
+        this.finish();
     }
 
     private void logarComFirebase(final String email, final String password) {
@@ -74,17 +149,20 @@ public class Login  extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+                            Toast.makeText(context,resources.getString(R.string.login_efetuando),Toast.LENGTH_SHORT).show();
                             Log.d("Sucesso", "signInWithEmail:success");
                             FirebaseUser user = auth.getCurrentUser();
                             updateUI(user);
+
                         } else {
                             String menssagemErro = task.getException().getMessage();
                             if(menssagemErro.contains("There is no user record corresponding to this identifier. The user may have been deleted.")) {
                                 criarUsuarioFirebase(email,password);
 
                             }else {
+                                loading.setVisibility(View.GONE);
                                 Log.w("falha", "signInWithEmail:failure", task.getException());
-                                Toast.makeText(Login.this, resources.getString(R.string.login_activity_falha_ao_auth), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, resources.getString(R.string.login_activity_falha_ao_auth), Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -133,13 +211,17 @@ public class Login  extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser usuario = auth.getCurrentUser();
-        updateUI(usuario);
+        if(!(auth ==null)) {
+            FirebaseUser usuario = auth.getCurrentUser();
+            updateUI(usuario);
+        }
     }
 
     private void updateUI(FirebaseUser usuario) {
         if(usuario!=null)
             carregaTelaPrincipal(usuario.getEmail(),usuario.getUid());
+        else
+            loading.setVisibility(View.GONE);
     }
 
     private void carregaTelaPrincipal(String email,String uid) {
@@ -147,6 +229,7 @@ public class Login  extends AppCompatActivity {
         intent.putExtra("email",email);
         intent.putExtra("uid",uid);
         startActivity(intent);
+        loading.setVisibility(View.GONE);
         finish();
     }
 

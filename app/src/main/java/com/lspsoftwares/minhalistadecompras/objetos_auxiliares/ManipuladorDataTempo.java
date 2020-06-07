@@ -75,14 +75,12 @@ public class ManipuladorDataTempo {
     public static String dataIntToDataString(Long dataInt, String pattern) {
         SimpleDateFormat formataData = new SimpleDateFormat(pattern);
         Date date = new Date(dataInt);
-        String d = formataData.format(date);
-        return d;
+        return formataData.format(date);
     }
     public static Long dataStringToDataInt(String dataString) throws ParseException {
         SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
         formataData.parse(dataString);
-        Long l = formataData.getCalendar().getTimeInMillis();
-        return  l;
+        return formataData.getCalendar().getTimeInMillis();
     }
     public static String tempoIntToTempoString(Long dataInt) {
         SimpleDateFormat formataData = new SimpleDateFormat("HH:mm");

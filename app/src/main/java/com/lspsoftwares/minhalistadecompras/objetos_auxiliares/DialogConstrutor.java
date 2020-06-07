@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.lspsoftwares.minhalistadecompras.R;
+
 public class DialogConstrutor extends AlertDialog.Builder {
     private String titulo;
     private String menssagem;
@@ -27,8 +29,31 @@ public class DialogConstrutor extends AlertDialog.Builder {
         this.setDialog(this.create());
         getDialog().show();
         menssagemCustomizada();
+    }
+    public DialogConstrutor(@NonNull Context context, String titulo, String menssagem, String positiveButtonTexto, DialogInterface.OnClickListener onClickListener) {
+        super(context);
+        setTitulo(titulo);
+        setMenssagem(menssagem);
+        this.positiveButtonTexto = positiveButtonTexto;
+        this.setPositiveButton(onClickListener);
+        this.setDialog(this.create());
+        getDialog().show();
+        menssagemCustomizada();
+    }
+    public DialogConstrutor(@NonNull Context context, String titulo, String menssagem, String positiveButtonTexto, String negativeButtonText,DialogInterface.OnClickListener onClickListenerPositiveButton,DialogInterface.OnClickListener onClickListenerNegativeButton) {
+        super(context);
+        setTitulo(titulo);
+        setMenssagem(menssagem);
+        this.positiveButtonTexto = positiveButtonTexto;
+        this.setPositiveButton(onClickListenerPositiveButton);
+        this.setNegativeButton(negativeButtonText,onClickListenerNegativeButton);
+        this.setDialog(this.create());
+        getDialog().show();
+        menssagemCustomizada();
+    }
 
-
+    private void setPositiveButton(DialogInterface.OnClickListener onClickListener) {
+        super.setPositiveButton(getPositiveButtonTexto(),onClickListener);
     }
 
     public DialogConstrutor(@NonNull Context context, String titulo, String menssagem) {
@@ -36,9 +61,7 @@ public class DialogConstrutor extends AlertDialog.Builder {
         setTitulo(titulo);
         setMenssagem(menssagem);
         setDialog(this.create());
-        getDialog().show();
-        menssagemCustomizada();
-
+       // menssagemCustomizada();
     }
 
     public DialogConstrutor(@NonNull Context context) {
@@ -47,6 +70,14 @@ public class DialogConstrutor extends AlertDialog.Builder {
         this.setMenssagem("   ");
         setDialog(this.create());
     }
+
+    @Override
+    public AlertDialog show() {
+        dialog.show();
+        menssagemCustomizada();
+        return dialog;
+    }
+
     public DialogConstrutor(@NonNull Context context, View view, String titulo, String menssagem) {
         super(context);
         this.setView(view);
@@ -101,21 +132,28 @@ public class DialogConstrutor extends AlertDialog.Builder {
         getDialog().dismiss();
     }
     public void tituloCustomizado(String titulo){
+        int color = getContext().getResources().getColor(R.color.colorPrimary);
         TextView textView = new TextView(getContext());
         textView.setText(titulo);
-        textView.setTextSize(1,22);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        textView.setTextSize(1,24);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(10,20,10,10);
+        textView.setPadding(10,40,10,40);
+        textView.setLayoutParams(layoutParams);
         textView.setGravity(Gravity.CENTER);
-        textView.setTextColor(Color.BLACK);
-        //final Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"font/century-gothic.ttf");
-        //textView.setTypeface(typeface);
+        textView.setTextColor(Color.WHITE);
+        textView.setBackgroundColor(color);
+        Typeface typeface = Typeface.MONOSPACE;
+        textView.setTypeface(typeface);
         setCustomTitle(textView);
     }
     public void menssagemCustomizada(){
         TextView textView = this.dialog.getWindow().findViewById(android.R.id.message);
-        textView.setTextSize(1,14);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        textView.setGravity(Gravity.LEFT);
+        textView.setTextSize(1,18);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(0,10,0,0);
+        textView.setLayoutParams(layoutParams);textView.setGravity(Gravity.LEFT);
+        textView.setPadding(0,10,0,0);
         textView.setTextColor(Color.DKGRAY);
         //final Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"font/century-gothic.ttf");
         //textView.setTypeface(typeface);

@@ -13,6 +13,10 @@ public class ListaCompras {
     private String criadorUid;
     private long dataCriacao;
     private long horaCriacao;
+    private int numAval;
+    private double val;
+    private int icon = 0;
+    private List<String> tags = new ArrayList<>();
 
     public ListaCompras() {
     }
@@ -88,4 +92,47 @@ public class ListaCompras {
     public void setuIdCategoriaLista(String uIdCategoriaLista) {
         this.uIdCategoriaLista = uIdCategoriaLista;
     }
+    public void avaliar(double val){
+        setVal((val+getVal()*getNumAval())/(getNumAval()+1));
+        setNumAval(getNumAval()+1);
+
+    }
+    public void reavaliar(double val,double antigo){
+        setVal((getVal()*getNumAval()-antigo)/(getNumAval()-1));
+        setVal((val+getVal()*getNumAval())/(getNumAval()));
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public int getNumAval() {
+        return numAval;
+    }
+
+    public void setNumAval(int numAval) {
+        this.numAval = numAval;
+    }
+
+    public double getVal() {
+        return val;
+    }
+
+    public void setVal(double val) {
+        this.val = val;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
+
 }
