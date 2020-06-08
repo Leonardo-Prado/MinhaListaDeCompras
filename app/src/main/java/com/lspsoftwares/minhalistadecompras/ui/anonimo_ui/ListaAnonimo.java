@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lspsoftwares.minhalistadecompras.R;
@@ -35,7 +35,7 @@ import java.util.Random;
 
 
 public class ListaAnonimo extends Fragment {
-    private FloatingActionButton fabAddLista;
+    private ImageButton btnAddLista;
     private Resources resources;
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -75,42 +75,11 @@ public class ListaAnonimo extends Fragment {
        rvMinhasListas.setLayoutManager(linearLayoutManager);
        rvListaComprasAdapter = new RvListaAnonimo(getContext(),interstitialAd);
        rvMinhasListas.setAdapter(rvListaComprasAdapter);
-       fabAddLista = v.findViewById(R.id.fabAddLista);
-       fabAddLista.setOnClickListener(new View.OnClickListener() {
+       btnAddLista = v.findViewById(R.id.ibtnNovaLista);
+       btnAddLista.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(getContext().LAYOUT_INFLATER_SERVICE);
-               View view = inflater.inflate(R.layout.dialog_add_lista, null);
-               final EditText edNome = view.findViewById(R.id.edNome);
-               final Spinner spPrivacidade = view.findViewById(R.id.spPrivacidade);
-               spPrivacidade.setVisibility(View.GONE);
-               Button btnAdd = view.findViewById(R.id.btnAdd);
-               final DialogConstrutor dialogAddLista = new DialogConstrutor(getContext(),view,resources.getString(R.string.fragment_lista_dialog_add_lista_titulo),resources.getString(R.string.fragment_lista_dialog_add_lista_menssagem));
-               btnAdd.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View v) {
-                       final ListaCompras lista = new ListaCompras();
-                       lista.setNome(edNome.getText().toString());
-                       lista.setCriadorUid(VariaveisEstaticas.getUsuario().getUid());
-                       try {
-                           ManipuladorDataTempo dataTempo = new ManipuladorDataTempo(new Date());
-                           lista.setDataCriacao(dataTempo.getDataInt());
-                           lista.setHoraCriacao(dataTempo.getTempoInt());
-                       } catch (ParseException e) {
-                           e.printStackTrace();
-                       }
-                       GeradorCodigosUnicos gcu = new GeradorCodigosUnicos(10);
-                       lista.setuId(gcu.gerarCodigos());
-                       lista.setIcon(setIconeLista(lista.getNome()));
-                       VariaveisEstaticas.getUsuario().getListas().add(lista.getuId());
-                       VariaveisEstaticas.getListaCompras().add(lista);
-                       VariaveisEstaticas.getItemMap().put(lista.getuId(),new ArrayList<Item>());
-                       VariaveisEstaticas.getVisiveis().add(1);
-                       rvListaComprasAdapter.notifyDataSetChanged();
-                       addListaDB(lista);
-                       dialogAddLista.fechar();
-                   }
-               });
+                novaLista();
            }
        });
        return v;
@@ -190,5 +159,39 @@ public class ListaAnonimo extends Fragment {
 
     public void setInterstitialAd(InterstitialAd interstitialAd) {
         this.interstitialAd = interstitialAd;
+    }
+    public void novaLista(){
+        LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(getContext().LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.dialog_add_lista, null);
+        final EditText edNome = view.findViewById(R.id.edNome);
+        final Spinner spPrivacidade = view.findViewById(R.id.spPrivacidade);
+        spPrivacidade.setVisibility(View.GONE);
+        Button btnAdd = view.findViewById(R.id.btnAdd);
+        final DialogConstrutor dialogAddLista = new DialogConstrutor(getContext(),view,resources.getString(R.string.fragment_lista_dialog_add_lista_titulo),resources.getString(R.string.fragment_lista_dialog_add_lista_menssagem));
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final ListaCompras lista = new ListaCompras();
+                lista.setNome(edNome.getText().toString());
+                lista.setCriadorUid(VariaveisEstaticas.getUsuario().getUid());
+                try {
+                    ManipuladorDataTempo dataTempo = new ManipuladorDataTempo(new Date());
+                    lista.setDataCriacao(dataTempo.getDataInt());
+                    lista.setHoraCriacao(dataTempo.getTempoInt());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                GeradorCodigosUnicos gcu = new GeradorCodigosUnicos(10);
+                lista.setuId(gcu.gerarCodigos());
+                lista.setIcon(setIconeLista(lista.getNome()));
+                VariaveisEstaticas.getUsuario().getListas().add(lista.getuId());
+                VariaveisEstaticas.getListaCompras().add(lista);
+                VariaveisEstaticas.getItemMap().put(lista.getuId(),new ArrayList<Item>());
+                VariaveisEstaticas.getVisiveis().add(1);
+                rvListaComprasAdapter.notifyDataSetChanged();
+                addListaDB(lista);
+                dialogAddLista.fechar();
+            }
+        });
     }
 }

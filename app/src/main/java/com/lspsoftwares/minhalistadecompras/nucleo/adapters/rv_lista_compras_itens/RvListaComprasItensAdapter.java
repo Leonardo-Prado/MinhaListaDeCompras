@@ -77,17 +77,20 @@ public class RvListaComprasItensAdapter extends RecyclerView.Adapter {
             }
         }
         Item item = VariaveisEstaticas.getItemMap().get(listaUId).get(position);
-        viewHolder.tvNome.setText(item.getNome());
+
         try {
+            viewHolder.tvNome.setText(item.getNome());
             String unidades = trataUnidade(listaCompras.getItens().get(position).getUnidade(),item.getQuantidade());
             viewHolder.tvQuantidade.setText(listaCompras.getItens().get(position).getQuantidade()+" " +unidades);
-        }catch (Exception e){}
-        final Resources resources = context.getResources();
-        TypedArray typedArray = resources.obtainTypedArray(R.array.imagemListCategorias);
-        int id = drawableFind(item.getNome(),Integer.parseInt(item.getCategoriaUid()));
-        Drawable drawable = typedArray.getDrawable(id);
-        viewHolder.imvCategoriaIcon.setImageDrawable(drawable);
-        viewHolder.position = position;
+            final Resources resources = context.getResources();
+            TypedArray typedArray = resources.obtainTypedArray(R.array.imagemListCategorias);
+            int id = drawableFind(item.getNome(),Integer.parseInt(item.getCategoriaUid()));
+            Drawable drawable = typedArray.getDrawable(id);
+            viewHolder.imvCategoriaIcon.setImageDrawable(drawable);
+            viewHolder.position = position;
+        }catch (Exception e){
+            Log.e("Error",e.getMessage());
+        }
         viewHolder.addAtualizadores(new AtualizarListaListener() {
             @Override
             public void atualizarLista() {
@@ -365,8 +368,12 @@ class ListaDeComprasItensViewHolder extends RecyclerView.ViewHolder{
         Item item = new Item();
         for (Item i:items
              ) {
-            if (i.getuId().equals(uid))
-                item = i;
+            try {
+                if (i.getuId().equals(uid))
+                    item = i;
+            }catch(Exception e){
+                Log.e("Error:",e.getMessage());
+            }
         }
         return item;
     }

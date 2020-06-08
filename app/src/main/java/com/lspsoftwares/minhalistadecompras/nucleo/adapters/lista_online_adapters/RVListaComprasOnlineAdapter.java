@@ -63,10 +63,17 @@ public class RVListaComprasOnlineAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.rv_lista_online_compras_layout,parent,false);
-        ListaDeComprasOnlineViewHolder holder = new ListaDeComprasOnlineViewHolder(view,context);
-        return holder;
+        try {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.rv_lista_online_compras_layout, parent, false);
+            ListaDeComprasOnlineViewHolder holder = new ListaDeComprasOnlineViewHolder(view, context);
+            return holder;
+        }catch(Exception e){
+            Log.e("Error",e.getMessage());
+            View view = new View(context);
+            ListaDeComprasOnlineViewHolder holder = new ListaDeComprasOnlineViewHolder(view, context);
+            return holder;
+        }
     }
 
     @Override

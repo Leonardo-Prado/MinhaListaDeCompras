@@ -121,18 +121,6 @@ public class RvListaComprasAdapter extends RecyclerView.Adapter {
                 viewHolder.onPause(b);
             }
         });
-        viewHolder.btnNovoItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                notificarAtividades();
-            }
-        });
-        viewHolder.btnIniciarCompras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                notificarAtividades();
-            }
-        });
 
     }
 

@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,14 +41,13 @@ import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Item;
 import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ListaCompras;
 import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Tag;
 import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
-import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AoIniciarAtividade;
 import com.lspsoftwares.minhalistadecompras.objetos_auxiliares.DialogConstrutor;
 import com.lspsoftwares.minhalistadecompras.objetos_auxiliares.GeradorCodigosUnicos;
 import com.lspsoftwares.minhalistadecompras.objetos_auxiliares.ManipuladorDataTempo;
 
 
 public class Lista extends Fragment {
-    private FloatingActionButton fabAddLista;
+    private ImageButton btnAddLista;
     private Resources resources;
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -88,15 +87,9 @@ public class Lista extends Fragment {
        rvMinhasListas.setLayoutManager(linearLayoutManager);
        rvListaComprasAdapter = new RvListaComprasAdapter(getContext(),interstitialAd);
        rvMinhasListas.setAdapter(rvListaComprasAdapter);
-       rvListaComprasAdapter.addAtividadesObserver(new AoIniciarAtividade() {
-           @Override
-           public void iniciouAtividade() {
-               if(fabAddLista.getVisibility()==View.VISIBLE)
-                   fabAddLista.setVisibility(View.GONE);
-           }
-       });
-       fabAddLista = v.findViewById(R.id.fabAddLista);
-       fabAddLista.setOnClickListener(new View.OnClickListener() {
+
+       btnAddLista = v.findViewById(R.id.ibtnNovaLista);
+       btnAddLista.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(getContext().LAYOUT_INFLATER_SERVICE);

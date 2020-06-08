@@ -14,7 +14,7 @@ public class HashCriador {
             return encriptado;
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return encriptado;
@@ -26,7 +26,7 @@ public class HashCriador {
             encriptado = digest.digest(texto.getBytes("UTF-8"));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return String.format("%0" + (encriptado.length*2) + "X", new BigInteger(1, encriptado));

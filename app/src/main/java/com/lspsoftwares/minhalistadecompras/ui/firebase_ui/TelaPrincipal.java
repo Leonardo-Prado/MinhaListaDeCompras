@@ -274,7 +274,13 @@ public class TelaPrincipal extends AppCompatActivity implements BottomNavigation
                             VariaveisEstaticas.getListaCompras().add(dataSnapshot.child("Lista").child(s).getValue(ListaCompras.class));
                             List<Item> items = new ArrayList<>();
                             for (ItemLista i : VariaveisEstaticas.getListaCompras().get(a).getItens()) {
-                                items.add(dataSnapshot.child("Item").child(i.getItemUid()).getValue(Item.class));
+                                if(i!=null) {
+                                    try {
+                                        items.add(dataSnapshot.child("Item").child(i.getItemUid()).getValue(Item.class));
+                                    } catch (Exception e) {
+                                        Log.e("Error", e.getMessage());
+                                    }
+                                }
                             }
                             VariaveisEstaticas.getItemMap().put(s, items);
                             a++;

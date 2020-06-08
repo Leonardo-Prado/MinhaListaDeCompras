@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lspsoftwares.minhalistadecompras.R;
@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ListaDesconn extends Fragment {
-        private FloatingActionButton fabAddLista;
+        private ImageButton btnAddLista;
         private Resources resources;
         FirebaseDatabase database;
         DatabaseReference myRef;
@@ -69,8 +69,8 @@ public class ListaDesconn extends Fragment {
         rvMinhasListas.setLayoutManager(linearLayoutManager);
         rvListaComprasAdapter = new RvListaComprasAdapterDesconn(getContext());
         rvMinhasListas.setAdapter(rvListaComprasAdapter);
-        fabAddLista = v.findViewById(R.id.fabAddLista);
-        fabAddLista.setOnClickListener(new View.OnClickListener() {
+        btnAddLista = v.findViewById(R.id.ibtnNovaLista);
+        btnAddLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(getContext().LAYOUT_INFLATER_SERVICE);

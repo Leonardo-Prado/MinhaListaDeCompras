@@ -7,35 +7,65 @@
     android:layout_height="match_parent"
     tools:context=".ui.firebase_ui.Lista_Fragment.Lista">
 
-    <Button
-        android:id="@+id/btnReload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="@string/fragment_lista_btn_recarregar_pagina"
-        android:visibility="gone" />
-
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMinhasListas"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-    </androidx.core.widget.NestedScrollView>
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_input_add"
-        android:tint="@color/common_google_signin_btn_text_dark_default"
-        app:backgroundTint="@color/colorAccent" />
+            <TextView
+                android:id="@+id/txtMinhaLista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Minhas Listas:"
+                android:textAllCaps="true"
+                android:textColor="@android:color/widget_edittext_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/ibtnNovaLista"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/brancoTransparente"
+                android:scrollbarThumbHorizontal="@color/branco"
+                android:scrollbarThumbVertical="@color/branco"
+                android:src="@android:drawable/ic_input_add"
+                android:tint="@color/colorSecundary" />
+
+            <Button
+                android:id="@+id/btnReload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/fragment_lista_btn_recarregar_pagina"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMinhasListas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
 </FrameLayout>

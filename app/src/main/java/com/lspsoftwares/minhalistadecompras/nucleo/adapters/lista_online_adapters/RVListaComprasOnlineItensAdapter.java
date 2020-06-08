@@ -68,12 +68,16 @@ public class RVListaComprasOnlineItensAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     Item i = dataSnapshot.getValue(Item.class);
-                    viewHolder.tvNome.setText(i.getNome());
-                    Resources resources = context.getResources();
-                    TypedArray typedArray = resources.obtainTypedArray(R.array.imagemListCategorias);
-                    int id = drawableFind(i.getNome(),Integer.parseInt(i.getCategoriaUid()));
-                    Drawable drawable = typedArray.getDrawable(id);
-                    viewHolder.imvCategoriaIcon.setImageDrawable(drawable);
+                    if(i!=null) {
+                        try {
+                            viewHolder.tvNome.setText(i.getNome());
+                            Resources resources = context.getResources();
+                            TypedArray typedArray = resources.obtainTypedArray(R.array.imagemListCategorias);
+                            int id = drawableFind(i.getNome(), Integer.parseInt(i.getCategoriaUid()));
+                            Drawable drawable = typedArray.getDrawable(id);
+                            viewHolder.imvCategoriaIcon.setImageDrawable(drawable);
+                        }catch(Exception e){ }
+                    }
                 }
 
                 @Override
