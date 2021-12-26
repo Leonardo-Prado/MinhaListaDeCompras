@@ -25,7 +25,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,16 +34,16 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.lspsoftwares.minhalistadecompras.R;
 import com.lspsoftwares.minhalistadecompras.db.DBGeneric;
-import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AoIniciarAtividade;
-import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AtualizarListaListener;
 import com.lspsoftwares.minhalistadecompras.nucleo.adapters.rv_lista_compras_itens.RvListaComprasItensAdapter;
 import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Compras;
 import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Item;
 import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ItemLista;
 import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ItemListaPreco;
 import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ListaCompras;
-import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AoAtualizarPreco;
 import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
+import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AoAtualizarPreco;
+import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AoIniciarAtividade;
+import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AtualizarListaListener;
 import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.ListaAtualizadaListener;
 import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.OnPauseObserver;
 import com.lspsoftwares.minhalistadecompras.objetos_auxiliares.DialogConstrutor;
@@ -351,7 +351,7 @@ class ListaDeComprasViewHolder extends RecyclerView.ViewHolder{
     }
 
     private void iniciarAd() {
-        interstitialAd.show();
+       // interstitialAd.show();
 
     }
 
