@@ -3,8 +3,6 @@ package com.lspsoftwares.minhalistadecompras.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,49 +25,47 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.lspsoftwares.minhalistadecompras.R;
+import com.lspsoftwares.minhalistadecompras.conn.ConnManager;
+import com.lspsoftwares.minhalistadecompras.entidades.Usuario;
+import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
+import com.lspsoftwares.minhalistadecompras.ui.firebase_ui.TelaPrincipal;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.lspsoftwares.minhalistadecompras.R;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Usuario;
-import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
-import com.lspsoftwares.minhalistadecompras.ui.anonimo_ui.TelaPrincipalAnonimo;
-import com.lspsoftwares.minhalistadecompras.ui.firebase_ui.TelaPrincipal;
-
 public class Login  extends AppCompatActivity {
+
+    //region Propriedades
     private EditText edEmail;
     private EditText edSenha;
     private Button btnEntrar;
-    private Button btnEntrarAnonimamente;
     private FirebaseAuth auth;
     private Resources resources;
     private TextView tvOfflineMsg;
-    private TextView tvInfo;
     ProgressBar loading;
     Context context;
+    //endregion
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        context = this;
+        //region Iniciação elementos da tela
         loading = findViewById(R.id.loading);
         loading.setVisibility(View.GONE);
         resources = getResources();
-        btnEntrarAnonimamente = findViewById(R.id.btnEntrarAnonimo);
-        context = this;
         tvOfflineMsg = findViewById(R.id.tvOfflineMsg);
-        tvInfo = findViewById(R.id.tvInfo);
         edEmail = findViewById(R.id.edEmail);
         edSenha = findViewById(R.id.edSenha);
         btnEntrar = findViewById(R.id.btnEntrar);
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(!(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED || connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)) {
-            edEmail.setVisibility(View.GONE);
-            edSenha.setVisibility(View.GONE);
-            btnEntrar.setVisibility(View.GONE);
-            tvInfo.setVisibility(View.INVISIBLE);
+        //endregion
+        //region Checar conexão
+        ConnManager connManager = new ConnManager(getSystemService(Context.CONNECTIVITY_SERVICE));
+        if(!connManager.isConnected())
             tvOfflineMsg.setVisibility(View.VISIBLE);
-        }
+        //endregion
+        //region Autenticação
         auth = FirebaseAuth.getInstance();
         edEmail.addTextChangedListener(new TextWatcher() {
             @Override
@@ -115,31 +111,7 @@ public class Login  extends AppCompatActivity {
 
             }
         });
-        btnEntrarAnonimamente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logarAnonimamente();
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                VariaveisEstaticas.reset();
-
-            }
-        });
-    }
-
-    private void logarAnonimamente() {
-        Toast.makeText(context,resources.getString(R.string.login_efetuando),Toast.LENGTH_LONG).show();
-        loading.setVisibility(View.VISIBLE);
-        Intent intent = new Intent(Login.this, TelaPrincipalAnonimo.class);
-        intent.putExtra("email","anonimo@anonimo.com");
-        intent.putExtra("uid","AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        startActivity(intent);
-        loading.setVisibility(View.GONE);
-        finish();
-    }
-
-    private void finalizar() {
-        this.finish();
+        //endregion
     }
 
     private void logarComFirebase(final String email, final String password) {
@@ -165,13 +137,10 @@ public class Login  extends AppCompatActivity {
                                 Toast.makeText(Login.this, resources.getString(R.string.login_activity_falha_ao_auth), Toast.LENGTH_LONG).show();
                             }
                         }
-
-                        // ...
                     }
                 });
 
     }
-
     private void criarUsuarioFirebase(String email,String password) {
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -202,10 +171,7 @@ public class Login  extends AppCompatActivity {
     }
 
     private void habilitaBotao() {
-        if(validarEmail(edEmail.getText().toString())&&validarSenha(edSenha.getText().toString()))
-            btnEntrar.setEnabled(true);
-        else
-            btnEntrar.setEnabled(false);
+        btnEntrar.setEnabled((validarEmail(edEmail.getText().toString())&&validarSenha(edSenha.getText().toString())));
     }
 
     @Override

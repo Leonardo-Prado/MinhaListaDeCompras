@@ -20,9 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.lspsoftwares.minhalistadecompras.R;
 import com.lspsoftwares.minhalistadecompras.db.DBGeneric;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Item;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ItemLista;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ListaCompras;
+import com.lspsoftwares.minhalistadecompras.entidades.Item;
+import com.lspsoftwares.minhalistadecompras.entidades.ItemLista;
+import com.lspsoftwares.minhalistadecompras.entidades.ListaCompras;
 import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
 import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AtualizarListaListener;
 

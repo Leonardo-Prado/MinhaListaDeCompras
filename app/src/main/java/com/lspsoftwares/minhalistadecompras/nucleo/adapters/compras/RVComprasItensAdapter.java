@@ -20,9 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lspsoftwares.minhalistadecompras.R;
 import com.lspsoftwares.minhalistadecompras.db.DBGeneric;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Item;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ItemLista;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ListaCompras;
+import com.lspsoftwares.minhalistadecompras.entidades.Item;
+import com.lspsoftwares.minhalistadecompras.entidades.ItemLista;
+import com.lspsoftwares.minhalistadecompras.entidades.ListaCompras;
 import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class RVComprasItensAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.rv_itens_online_lista_de_compras,parent,false);
+        View view = inflater.inflate(R.layout.rv_itens_lista_de_compras,parent,false);
         ComprasItensViewHolder holder = new ComprasItensViewHolder(view,myRef,listaUId);
         return holder;
     }

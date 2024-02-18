@@ -32,9 +32,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.lspsoftwares.minhalistadecompras.R;
 import com.lspsoftwares.minhalistadecompras.db.DBGeneric;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Item;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ItemLista;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ListaCompras;
+import com.lspsoftwares.minhalistadecompras.entidades.Item;
+import com.lspsoftwares.minhalistadecompras.entidades.ItemLista;
+import com.lspsoftwares.minhalistadecompras.entidades.ListaCompras;
 import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
 import com.lspsoftwares.minhalistadecompras.objetos_auxiliares.ManipuladorDataTempo;
 
@@ -64,7 +64,7 @@ public class RVComprasAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.rv_lista_online_compras_layout,parent,false);
+        View view = inflater.inflate(R.layout.rv_lista_compras_layout,parent,false);
         ComprasViewHolder holder = new ComprasViewHolder(view,context);
         return holder;
     }
@@ -156,7 +156,7 @@ class ComprasViewHolder extends RecyclerView.ViewHolder{
         db = new DBGeneric(context);
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
-        imbAddMinhasListas = view.findViewById(R.id.imbAddMinhasListas);
+        //imbAddMinhasListas = view.findViewById(R.id.imbAddMinhasListas);
         tvNome = view.findViewById(R.id.tvNome);
         tvDescricao = view.findViewById(R.id.tvDescricao);
         tvDataCriacao = view.findViewById(R.id.tvDataCriacao);
@@ -164,7 +164,7 @@ class ComprasViewHolder extends RecyclerView.ViewHolder{
         tvListaTitulo = view.findViewById(R.id.tvListaTitulo);
         imvIconeLista = view.findViewById(R.id.imvIconeLista);
         cvLista = view.findViewById(R.id.cvLista);
-        rbCalssificacao = view.findViewById(R.id.rbClassificacao);
+        //rbCalssificacao = view.findViewById(R.id.rbClassificacao);
         rvItens = view.findViewById(R.id.rvItens);
         if(listaCompras==null)
             listaCompras = new ListaCompras();

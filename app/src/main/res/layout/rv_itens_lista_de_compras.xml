@@ -106,7 +106,9 @@
                     android:ems="10"
                     android:hint="@string/rv_lista_de_compras_itens_cv_tv_preco"
                     android:inputType="numberDecimal"
+                    android:textAllCaps="true"
                     android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                    android:textSize="12sp"
                     android:visibility="gone" />
 
             </LinearLayout>

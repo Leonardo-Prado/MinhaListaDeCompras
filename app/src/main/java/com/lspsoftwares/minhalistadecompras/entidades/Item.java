@@ -1,4 +1,4 @@
-package com.lspsoftwares.minhalistadecompras.nucleo.entidades;
+package com.lspsoftwares.minhalistadecompras.entidades;
 
 public class Item {
     private String uId;

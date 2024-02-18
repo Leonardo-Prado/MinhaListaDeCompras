@@ -1,12 +1,9 @@
 package com.lspsoftwares.minhalistadecompras;
 
-import android.util.Log;
-
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Usuario;
+import com.lspsoftwares.minhalistadecompras.entidades.Usuario;
 
 import org.junit.Test;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Random;
 

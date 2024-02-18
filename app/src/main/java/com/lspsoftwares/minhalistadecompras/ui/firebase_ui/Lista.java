@@ -1,4 +1,4 @@
-package com.lspsoftwares.minhalistadecompras.ui.firebase_ui.Lista_Fragment;
+package com.lspsoftwares.minhalistadecompras.ui.firebase_ui;
 
 import android.content.ContentValues;
 import android.content.res.Resources;
@@ -6,30 +6,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.lspsoftwares.minhalistadecompras.R;
 import com.lspsoftwares.minhalistadecompras.db.DBGeneric;
+import com.lspsoftwares.minhalistadecompras.entidades.Item;
+import com.lspsoftwares.minhalistadecompras.entidades.ListaCompras;
 import com.lspsoftwares.minhalistadecompras.nucleo.adapters.rv_lista_compras.RvListaComprasAdapter;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Classificacao;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Item;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.ListaCompras;
-import com.lspsoftwares.minhalistadecompras.nucleo.entidades.Tag;
 import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
 import com.lspsoftwares.minhalistadecompras.objetos_auxiliares.DialogConstrutor;
 import com.lspsoftwares.minhalistadecompras.objetos_auxiliares.GeradorCodigosUnicos;
@@ -45,7 +37,7 @@ import java.util.Random;
 
 
 public class Lista extends Fragment {
-    private ImageButton btnAddLista;
+    private FloatingActionButton fabAddLista;
     private Resources resources;
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -59,10 +51,11 @@ public class Lista extends Fragment {
         // Required empty public constructor
     }
 
-    public static Lista newInstance(boolean connected,InterstitialAd interstitialAd) {
+    public static Lista newInstance(boolean connected,InterstitialAd interstitialAd,FloatingActionButton button) {
         Lista fragment = new Lista();
         fragment.setConnected(connected);
         fragment.setInterstitialAd(interstitialAd);
+        fragment.fabAddLista = button;
         return fragment;
     }
 
@@ -85,20 +78,13 @@ public class Lista extends Fragment {
        rvMinhasListas.setLayoutManager(linearLayoutManager);
        rvListaComprasAdapter = new RvListaComprasAdapter(getContext(),interstitialAd);
        rvMinhasListas.setAdapter(rvListaComprasAdapter);
-
-       btnAddLista = v.findViewById(R.id.ibtnNovaLista);
-       btnAddLista.setOnClickListener(new View.OnClickListener() {
+        fabAddLista.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(getContext().LAYOUT_INFLATER_SERVICE);
                View view = inflater.inflate(R.layout.dialog_add_lista, null);
                final EditText edNome = view.findViewById(R.id.edNome);
                final EditText edDescricao = view.findViewById(R.id.edDescricao);
-               final Spinner spPrivacidade = view.findViewById(R.id.spPrivacidade);
-               ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1);
-               adapter.add("Publico");
-               adapter.add("Privado");
-               spPrivacidade.setAdapter(adapter);
                Button btnAdd = view.findViewById(R.id.btnAdd);
                final DialogConstrutor dialogAddLista = new DialogConstrutor(getContext(),view,resources.getString(R.string.fragment_lista_dialog_add_lista_titulo),resources.getString(R.string.fragment_lista_dialog_add_lista_menssagem));
                btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -128,48 +114,6 @@ public class Lista extends Fragment {
                        VariaveisEstaticas.getVisiveis().add(1);
                        rvListaComprasAdapter.notifyDataSetChanged();
                        addListaDB(lista);
-                       if(spPrivacidade.getSelectedItem().toString().equals("Publico")){
-                           List<String> tags = pegaTags(lista.getNome());
-                           tags.add(lista.getNome().toLowerCase());
-                           for (final String s:tags
-                                ) {
-                               myRef.child("Tags").child(s).addListenerForSingleValueEvent(new ValueEventListener() {
-                                   @Override
-                                   public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                       if (dataSnapshot.exists()) {
-                                           Tag tag = dataSnapshot.getValue(Tag.class);
-                                           Classificacao classificacao = new Classificacao();
-                                           classificacao.setuId(lista.getuId());
-                                           tag.getClassificacoes().add(classificacao);
-                                           Map<String, Object> update = new HashMap<>();
-                                           update.put(s, tag);
-                                           myRef.child("Tags").updateChildren(update);
-                                           lista.getTags().add(tag.getTag());
-                                           update = new HashMap<>();
-                                           update.put(lista.getuId(), lista);
-                                           myRef.child("Lista").updateChildren(update);
-
-                                       } else {
-                                           Tag tag = new Tag();
-                                           Classificacao classificacao = new Classificacao();
-                                           classificacao.setuId(lista.getuId());
-                                           tag.getClassificacoes().add(classificacao);
-                                           tag.setTag(s);
-                                           myRef.child("Tags").child(s).setValue(tag);
-                                           lista.getTags().add(tag.getTag());
-                                           Map<String, Object> update = new HashMap<>();
-                                           update.put(lista.getuId(), lista);
-                                           myRef.child("Lista").updateChildren(update);
-                                       }
-                                   }
-
-                                   @Override
-                                   public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                   }
-                               });
-                           }
-                       }
                        dialogAddLista.fechar();
                    }
                });
@@ -181,18 +125,17 @@ public class Lista extends Fragment {
     }
 
     private int setIconeLista(String nome) {
-        if(nome.toLowerCase().contains("aniversario")||nome.toLowerCase().contains("niver")||nome.toLowerCase().contains("aniver"))
+        if(nome.toLowerCase().contains("niver"))
             return 4;
-        else if(nome.toLowerCase().contains("churrasco")||nome.toLowerCase().contains("churras"))
+        else if(nome.toLowerCase().contains("churras"))
             return 3;
         else if(nome.toLowerCase().contains("bolo"))
             return 5;
-        else if(nome.toLowerCase().contains("cafe")||nome.toLowerCase().contains("café")||nome.toLowerCase().contains("lanche"))
+        else if(nome.toLowerCase().contains("caf")||nome.toLowerCase().contains("lanche"))
             return 6;
         else {
             Random random = new Random();
             return random.nextInt(3);
-
         }
     }
 
