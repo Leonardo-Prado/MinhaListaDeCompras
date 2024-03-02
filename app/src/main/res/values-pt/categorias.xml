@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categorias">
+        <item>Outros...</item>
+        <item>Alimentos</item>
+        <item>Bebidas</item>
+        <item>Biscoitos</item>
+        <item>Carnes</item>
+        <item>Congelados</item>
+        <item>Enlatados</item>
+        <item>Doces</item>
+        <item>Frutas e verduras</item>
+        <item>Higiene pessoal</item>
+        <item>Laticínios</item>
+        <item>Massas</item>
+        <item>Padaria</item>
+        <item>Produtos de limpeza</item>
+        <item>Temperos</item>
+    </string-array>
+</resources>

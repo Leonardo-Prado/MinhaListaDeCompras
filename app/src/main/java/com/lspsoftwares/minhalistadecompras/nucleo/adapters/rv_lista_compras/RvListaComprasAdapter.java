@@ -1,7 +1,9 @@
 package com.lspsoftwares.minhalistadecompras.nucleo.adapters.rv_lista_compras;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -34,12 +36,12 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.lspsoftwares.minhalistadecompras.R;
 import com.lspsoftwares.minhalistadecompras.db.DBGeneric;
-import com.lspsoftwares.minhalistadecompras.nucleo.adapters.rv_lista_compras_itens.RvListaComprasItensAdapter;
 import com.lspsoftwares.minhalistadecompras.entidades.Compras;
 import com.lspsoftwares.minhalistadecompras.entidades.Item;
 import com.lspsoftwares.minhalistadecompras.entidades.ItemLista;
 import com.lspsoftwares.minhalistadecompras.entidades.ItemListaPreco;
 import com.lspsoftwares.minhalistadecompras.entidades.ListaCompras;
+import com.lspsoftwares.minhalistadecompras.nucleo.adapters.rv_lista_compras_itens.RvListaComprasItensAdapter;
 import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
 import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AoAtualizarPreco;
 import com.lspsoftwares.minhalistadecompras.nucleo.interfaces.AoIniciarAtividade;
@@ -90,10 +92,13 @@ public class RvListaComprasAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         final ListaDeComprasViewHolder viewHolder = (ListaDeComprasViewHolder) holder;
         viewHolder.tvNome.setText(VariaveisEstaticas.getListaCompras().get(position).getNome());
-        viewHolder.tvDataCriacao.setText(resources.getString(R.string.rv_lista_de_compras_cv_tv_data_criacao)+"\n"+ManipuladorDataTempo.dataIntToDataString(VariaveisEstaticas.getListaCompras().get(position).getDataCriacao()));
-
+        viewHolder.tvDataCriacao.setText(ManipuladorDataTempo.dataIntToDataString(VariaveisEstaticas.getListaCompras().get(position).getDataCriacao()));
+        if(VariaveisEstaticas.getListaCompras().get(position).getDescricao().length() > 2)
+            viewHolder.tvDescricao.setText(resources.getString(R.string.rv_lista_de_compras_cv_tv_descricao)+ " "+VariaveisEstaticas.getListaCompras().get(position).getDescricao());
+        else
+            viewHolder.tvDescricao.setText("");
         if(VariaveisEstaticas.getListaCompras().get(position).getCriadorUid().equals(VariaveisEstaticas.getUsuario().getUid()))
-            viewHolder.tvCriadoPor.setText(resources.getString(R.string.rv_lista_de_compras_cv_tv_criador)+ "\n"+VariaveisEstaticas.getUsuario().getNome().split("@")[0]);
+            viewHolder.tvCriadoPor.setText(resources.getString(R.string.rv_lista_de_compras_cv_tv_criador)+ " "+ VariaveisEstaticas.getUsuario().getNome().split("@")[0]);
         else
             buscarCriador(VariaveisEstaticas.getListaCompras().get(position).getCriadorUid(),viewHolder.tvCriadoPor);
         viewHolder.listaUid = VariaveisEstaticas.getListaCompras().get(position).getuId();
@@ -122,6 +127,20 @@ public class RvListaComprasAdapter extends RecyclerView.Adapter {
             }
         });
 
+        viewHolder.imbShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                String share = VariaveisEstaticas.getListaCompras().get(position).shareText();
+                sendIntent.putExtra(Intent.EXTRA_TEXT, share);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                context.startActivity(shareIntent);
+            }
+        });
+
     }
 
 
@@ -138,7 +157,7 @@ public class RvListaComprasAdapter extends RecyclerView.Adapter {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
-                        tvCriadoPor.setText(resources.getString(R.string.rv_lista_de_compras_cv_tv_criador)+"\n"+issue.child("nome").getValue().toString().split("@")[0]);
+                        tvCriadoPor.setText(resources.getString(R.string.rv_lista_de_compras_cv_tv_criador)+" "+issue.child("nome").getValue().toString().split("@")[0]);
                     }
                 }
             }
@@ -194,6 +213,7 @@ class ListaDeComprasViewHolder extends RecyclerView.ViewHolder{
     TextView tvListaTitulo;
     ImageView imvIconeLista;
     ImageButton imbRemover;
+    ImageButton imbShare;
     Button btnNovoItem;
     Button btnIniciarCompras;
     RecyclerView rvItens;
@@ -229,6 +249,7 @@ class ListaDeComprasViewHolder extends RecyclerView.ViewHolder{
         cvLista = view.findViewById(R.id.cvLista);
         btnNovoItem = view.findViewById(R.id.btnNovoItem);
         btnIniciarCompras = view.findViewById(R.id.btnIniciarCompras);
+        imbShare = view.findViewById(R.id.imbShare);
         if(VariaveisEstaticas.getListaCompras().get(posicao).getItens().size()>0)
             btnIniciarCompras.setVisibility(View.VISIBLE);
         else
@@ -351,8 +372,15 @@ class ListaDeComprasViewHolder extends RecyclerView.ViewHolder{
     }
 
     private void iniciarAd() {
-       // interstitialAd.show();
-
+        try {
+            if (interstitialAd != null) {
+                interstitialAd.show((Activity) context);
+            } else {
+                Log.d("TAG", "The interstitial ad wasn't ready yet.");
+            }
+        }catch(Exception e){
+            Log.d("TAG", "The interstitial ad wasn't ready yet.");
+        }
     }
 
     private void gerenciaCompras(boolean emCompras) {
@@ -476,9 +504,15 @@ class ListaDeComprasViewHolder extends RecyclerView.ViewHolder{
         try {
             double preco = 0;
             for (ItemListaPreco i : VariaveisEstaticas.getUsuario().getCompras().get(comprasPosicao).getItemPrecos()) {
-                if (i.isConcluido()) {
-                    preco += i.getPreco() * VariaveisEstaticas.getListaCompras().get(posicao).getItens().get(posicao).getQuantidade();
+                Double quantidade = 0.0;
+                for (ItemLista itemLista : VariaveisEstaticas.getListaCompras().get(posicao).getItens()){
+                    if(i.getItemUid().contains(itemLista.getItemUid())) {
+                        quantidade = itemLista.getQuantidade();
+                        break;
+                    }
                 }
+                if (i.isConcluido())
+                    preco += i.getPreco() * quantidade;
             }
             VariaveisEstaticas.getUsuario().getCompras().get(comprasPosicao).setPrecoTotal(preco);
             return VariaveisEstaticas.getUsuario().getCompras().get(comprasPosicao).getPrecoTotalString();
@@ -522,7 +556,7 @@ class ListaDeComprasViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void atualizado() {
                 if(emCompras)
-                    tvListaTitulo.setText("R$ "+ totalPreco());
+                    tvListaTitulo.setText(resources.getText(R.string.unidade_monetaria)+" "+ totalPreco());
                 else
                     tvListaTitulo.setText(tvTituloTexto);
             }

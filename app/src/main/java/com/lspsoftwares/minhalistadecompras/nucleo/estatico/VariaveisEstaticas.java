@@ -221,4 +221,5 @@ public class VariaveisEstaticas {
         if(instancia!=null)
             instancia = new VariaveisEstaticas(context,database,myRef);
     }
+
 }

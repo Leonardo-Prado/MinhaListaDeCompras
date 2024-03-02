@@ -1,0 +1,155 @@
+<resources>
+    <!--APP-->
+    <string name="app_name">Empta - Minha Lista de Compras</string>
+    <!--Facebook Login Sdk-->
+    <string name="facebook_app_id">3040722109485771</string>
+    <string name="fb_login_protocol_scheme">fb3040722109485771</string>
+
+
+    <!--Login-->
+    <string name="title_activity_login">Entre</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entre ou Registre-se</string>
+    <string name="action_sign_in_anonimo">Entre Anonimamente</string>
+    <string name="action_sign_in_short">Entre</string>
+    <string name="welcome">"Bem-Vindo!"</string>
+    <string name="invalid_username">Esse não é um e-mail válido</string>
+    <string name="invalid_password">A senha deve ter mais de 5 caracteres</string>
+    <string name="login_failed">"Falha ao logar"</string>
+    <string name="offline_msg">"Você está offline, por favor, conecte-se à internet."</string>
+
+    <string name="login_efetuando">Efetuando Login</string>
+    <string name="login_conectando_servidor">Conectando ao servidor</string>
+    <!--Login Activity-->
+    <string name="login_activity_falha_ao_auth">Falha ao autenticar, verifique a senha.</string>
+    <string name="login_activity_falha_ao_criar_usuario">Falha ao criar usuário.</string>
+    <!--Tela Principal-->
+    <string name="title_activity_tela_principal">Minha Lista de Compras</string>
+    <string name="tv_progress_status_info_carregando">Carregando</string>
+    <!--bottom Menu-->
+    <string name="menu_bottom_menu_item_despensa">Despensa</string>
+    <string name="menu_bottom_menu_item_lista">Minhas Listas</string>
+    <string name="menu_bottom_menu_item_buscar_lista">Procurar Lista Online</string>
+    <string name="menu_bottom_menu_item_novo_item">Novo Item</string>
+    <!--Menu -->
+    <string name="menu_item_sobre">Sobre</string>
+    <string name="menu_item_logout">Logout</string>
+    <string name="menu_item_login">Login</string>
+    <string name="menu_item_sair">Sair</string>
+    <!--Fragment Lista-->
+    <string name="fragment_lista_dialog_add_lista_titulo">Dê um nome para a sua nova lista</string>
+    <string name="fragment_lista_dialog_add_lista_menssagem"> </string>
+    <!--Fragment Lista Online-->
+    <string name="fragment_lista_online_edbuscar_hint">Procurar uma lista online...</string>
+    <string name="fragment_lista_online_btnbuscar_text">Buscar</string>
+
+    <!--Dialog Add Lista-->
+    <string name="dialog_add_lista_ednome_hint">Nome da sua lista...</string>
+    <string name="dialog_add_lista_eddescricao_hint">Descrição...</string>
+    <string name="dialog_add_lista_botao_criar_texto">Criar</string>
+    <!--Rv Lista de Compras-->
+    <string name="rv_lista_de_compras_cv_tv_nome">Nome: </string>
+    <string name="rv_lista_de_compras_cv_tv_descricao">Descrição: </string>
+    <string name="rv_lista_de_compras_cv_tv_data_criacao">Data de Criação: </string>
+    <string name="rv_lista_de_compras_cv_tv_criador">Criada Por: </string>
+    <string name="rv_lista_de_compras_cv_btn_novo_item">Novo Item</string>
+    <string name="rv_lista_de_compras_tv_itens_titulo">Minha Lista</string>
+    <string name="rv_lista_de_compras_tv_itens_organizar_por">Organizar Por:</string>
+    <string name="rv_lista_de_compras_cv_btn_iniciar_compras">Iniciar Compras</string>
+    <string name="rv_lista_de_compras_cv_btn_pausar_compras">Pausar Compras</string>
+    <string name="rv_lista_de_compras_tv_descricao">Descrição: </string>
+    <!--Rv Itens Lista de Compras-->
+    <string name="rv_lista_de_compras_itens_cv_tv_nome">Item: </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_quantidade">Quantidade: </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_descricao">Descrição: </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_preco">Preço... </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_categoria">Categoria: </string>
+    <string name="rv_lista_de_compras_itens_cv_cb_concluido">Concluído! </string>
+    <!--Dialog novo Item-->
+    <string name="dialog_novo_Item_editem_hint">Item...</string>
+    <string name="dialog_novo_Item_eddescricao_hint">Descrição...</string>
+    <string name="dialog_novo_Item_edquantidade_hint">Quantidade...</string>
+    <string name="dialog_novo_Item_botao_add_texto">Adicionar</string>
+
+    <string name="dialog_confirmar_compra_preco">Valor Total da Compra: R$</string>
+    <!--Dialog descricao-->
+    <string name="dialog_sobre_descricao">Este é um app que permite elaborar listas de compras, utilize-o para controlar seus gastos mensais no supermercado.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Dialog Tela Principal Erro ao buscar dados-->
+    <string name="tela_principal_dialog_erro_buscar_dados_firebase_titulo">Erro!!!</string>
+    <string name="tela_principal_dialog_erro_buscar_dados_firebase_menssagem">Não foi possível buscar os dados online</string>
+    <string name="tela_principal_dialog_erro_buscar_dados_firebase_pos_btn_txt">Fechar</string>
+
+    <!--Dialog Tela Principal offline-->
+    <string name="tela_principal_dialog_offline_titulo">Conecte-se!</string>
+    <string name="tela_principal_dialog_offline_menssagem">Para uma melhor experiência com o aplicativo, recomendamos que se conecte à internet.</string>
+    <string name="tela_principal_dialog_offline_pos_btn_txt">Fechar</string>
+
+    <!--Dialog Tela Principal Anônimo-->
+    <string name="tela_principal_dialog_anonimo_titulo">Você não está logado!</string>
+    <string name="tela_principal_dialog_anonimo_menssagem">Para uma experiência completa com o aplicativo, recomendamos que efetue login na tela inicial, basta informar um endereço de email e uma senha, uma conta de usuário será criada automaticamente.</string>
+    <string name="tela_principal_dialog_anonimo_pos_btn_txt">Fechar</string>
+
+    <!--Dialog Tela Principal Lista online offline-->
+    <string name="tela_principal_dialog_lista_offline_titulo">Conecte-se!</string>
+    <string name="tela_principal_dialog_lista_offline_menssagem">Parece que você está desconectado. Não é possível acessar as listas online, para acessar você deve estar conectado à internet.</string>
+    <string name="tela_principal_dialog_lista_offline_pos_btn_txt">Fechar</string>
+
+    <!--Dialog Login  offline-->
+    <string name="login_dialog_offline_titulo">Erro de conexão!</string>
+    <string name="login_dialog_offline_menssagem">Uma conexão com a internet é necessária para efetuar login.</string>
+    <string name="login_dialog_offline_pos_btn_txt">Fechar</string>
+
+    <!--RVListaComprasOnlineAdapter -->
+    <string name="RVListaComprasOnlineAdapter_toast_classificou_lista">Você classificou essa lista</string>
+    <string name="RVListaComprasOnlineAdapter_toast_adicionou_lista">Adicionado às minhas listas</string>
+
+    <!--RVListaComprasAdapter-->
+    <string name="rvlistacomprasadapter_Add_novo_item_titulo">Adicione um Novo Item!</string>
+    <string name="rvlistacomprasadapter_Add_novo_item_menssagem">Adicione um novo item à sua lista de compras.</string>
+
+    <string name="rvlistacomprasadapter_campo_vazio_titulo">Erro, campo vazio!</string>
+    <string name="rvlistacomprasadapter_campo_vazio_menssagem">Os campos nome e quantidades do item devem ser preenchidos para se adicionar um novo item!</string>
+    <string name="rvlistacomprasadapter_campo_vazio_pos_btn_txt">OK</string>
+
+    <string name="rvlistacomprasadapter_concluir_compra_titulo">Concluir Compra!</string>
+    <string name="rvlistacomprasadapter_concluir_compra_menssagem">Selecione Concluir para finalizar a compra ou pausar para continuar depois.</string>
+
+    <string name="rvlistacomprasadapter_confirmar_concluir_titulo">Tem certeza!</string>
+    <string name="rvlistacomprasadapter_confirmar_concluir_menssagem">Nem todos os itens foram concluídos ou nem todos os itens tiveram os preços atribuídos. Deseja concluir a compra assim mesmo?</string>
+
+    <!--RVListaComprasItensAdapter-->
+    <string name="rvlistacomprasitensadapter_alterar_quantidade_titulo">Alterar Quantidade</string>
+    <string name="rvlistacomprasitensadapter_alterar_quantidade_menssagem">Altere a quantidade de itens que deseja comprar.</string>
+
+    <!--Dialog concluir compra-->
+    <string name="dialog_concluir_compras_rb_concluir">Concluir Compra</string>
+    <string name="dialog_concluir_compras_btn_confirmar">Confirmar</string>
+    <string name="dialog_concluir_compras_rb_pausar">Pausar Compra</string>
+    <string name="dialog__confirmar_concluir_btn_confirmar">Confirmar</string>
+    <string name="dialog__confirmar_concluir_cancelar">Cancelar</string>
+    <string name="dialog_editar_quantidade_ed_quantidade">Quantidade...</string>
+    <string name="dialog_editar_quantidade_btn_concluir">Concluir</string>
+    <string name="dialog_sobre_versao">Versão:</string>
+    <string name="fragment_lista_btn_recarregar_pagina">Recarregar página</string>
+    <string name="tela_principal_loading_toast">Carregando Informações</string>
+    <string name="login_activity_tv_bem_vindo">Bem-vindo(a) ao Empta!</string>
+    <string name="login_activity_tvinfo_text">Você pode acessar o app fazendo login com um endereço de e-mail e uma senha ou entrar como um usuário anônimo.
+        Se você não tiver uma conta cadastrada será criada uma conta automaticamente ao digitar o e-mail e a senha e clicar no botão entre ou registre-se.</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="unidade_monetaria">R$</string>
+    <string name="fragment_compras_tv_minhas_compra">Minhas compras</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

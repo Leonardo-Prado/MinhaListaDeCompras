@@ -94,7 +94,8 @@
                     android:layout_weight="1"
                     android:checked="false"
                     android:text="@string/rv_lista_de_compras_itens_cv_cb_concluido"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    tools:visibility="gone" />
 
                 <EditText
                     android:id="@+id/edPreco"
@@ -108,7 +109,7 @@
                     android:inputType="numberDecimal"
                     android:textAllCaps="true"
                     android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:visibility="gone" />
 
             </LinearLayout>

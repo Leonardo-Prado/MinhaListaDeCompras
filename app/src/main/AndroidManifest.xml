@@ -18,7 +18,7 @@
             android:value="ca-app-pub-3525661211434624~8663014929" /> <!-- ca-app-pub-3525661211434624~8663014929 -->
 
         <activity
-            android:name=".ui.firebase_ui.TelaPrincipal"
+            android:name=".ui.TelaPrincipal"
             android:label="@string/title_activity_tela_principal"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true">

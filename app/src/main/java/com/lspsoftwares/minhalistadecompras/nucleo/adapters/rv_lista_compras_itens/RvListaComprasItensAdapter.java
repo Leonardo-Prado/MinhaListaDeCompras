@@ -118,7 +118,8 @@ public class RvListaComprasItensAdapter extends RecyclerView.Adapter {
                     });
                     try {
                         if (!viewHolder.edPreco.getText().toString().equals(""))
-                            VariaveisEstaticas.getUsuario().getCompras().get(comprasPosicao).getItemPrecos().get(position).setPreco(Double.parseDouble(viewHolder.edPreco.getText().toString()));
+                            VariaveisEstaticas.getUsuario().getCompras().get(comprasPosicao).getItemPrecos().
+                                    get(position).setPreco(Double.parseDouble(viewHolder.edPreco.getText().toString().replace("$","").replace("R","") ));
                         else
                             VariaveisEstaticas.getUsuario().getCompras().get(comprasPosicao).getItemPrecos().get(position).setPreco(0);
                     }catch (Exception e){

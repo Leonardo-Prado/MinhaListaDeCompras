@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="unidades">
-        <item>unidade</item>
+        <item>unit</item>
         <item>Kg</item>
-        <item>caixa</item>
-        <item>grama</item>
-        <item>litro</item>
-        <item>peça</item>
-        <item>metro</item>
-        <item>duzia</item>
+        <item>oz</item>
+        <item>lb</item>
+        <item>box</item>
+        <item>gram</item>
+        <item>liter</item>
+        <item>gal</item>
+        <item>piece</item>
+        <item>meter</item>
+        <item>dozen</item>
     </string-array>
 </resources>

@@ -1,5 +1,7 @@
 package com.lspsoftwares.minhalistadecompras.entidades;
 
+import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,6 +134,52 @@ public class ListaCompras {
 
     public void setIcon(int icon) {
         this.icon = icon;
+    }
+
+    public String shareText(){
+        String myShareText = "";
+        myShareText += "*"+getNome() + "*\n";
+        myShareText += getDescricao() + "\n\n\t";
+        String uID = getuId();
+        List<Item> items = VariaveisEstaticas.getItemMap().get(uID);
+        for(ItemLista i : getItens()){
+            Item item = new Item();
+            for (Item it: items){
+                if(it.getuId().contains(i.getItemUid())){
+                    item = it;
+                    break;
+                }
+            }
+            myShareText += "* "+ item.getNome() + "\t- "+ i.getQuantidade() + i.getUnidade() + "\n\t";
+        }
+        return myShareText;
+    }
+
+    public String shareHtml(){
+        String myShareText = "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<head>\n" +
+                "    <title>Home</title>\n" +
+                "    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
+                "</head>\n" +
+                "<body>";
+        myShareText +="<div><h4>" + getNome() + "</h4></div><br>";
+        myShareText += "<div><span>" + getDescricao() + "</span></div><br><ul>";
+        String uID = getuId();
+        List<Item> items = VariaveisEstaticas.getItemMap().get(uID);
+        for(ItemLista i : getItens()){
+            Item item = new Item();
+            for (Item it: items){
+                if(it.getuId().contains(i.getItemUid())){
+                    item = it;
+                    break;
+                }
+            }
+            myShareText +="<li>" +item.getNome() + "\t"+ i.getQuantidade() + i.getUnidade() + "</li>";
+        }
+        myShareText += "</ul></body>\n" +
+                "</html>";
+        return myShareText;
     }
 
 

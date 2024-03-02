@@ -1,143 +1,144 @@
 <resources>
     <!--APP-->
-    <string name="app_name">Empta - Minha Lista de Compras</string>
+    <string name="app_name">Empta - My Shopping List</string>
     <!--Facebook Login Sdk-->
     <string name="facebook_app_id">3040722109485771</string>
     <string name="fb_login_protocol_scheme">fb3040722109485771</string>
 
 
     <!--Login-->
-    <string name="title_activity_login">Entre</string>
+    <string name="title_activity_login">Login</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Senha</string>
-    <string name="action_sign_in">Entre ou Registre-se</string>
-    <string name="action_sign_in_anonimo">Entre Anonimamente</string>
-    <string name="action_sign_in_short">Entre</string>
-    <string name="welcome">"Bem-Vindo!"</string>
-    <string name="invalid_username">Esse não é um e-mail valido</string>
-    <string name="invalid_password">A senha deve ter mais de 5 caracteres</string>
-    <string name="login_failed">"Falha ao logar"</string>
-    <string name="offline_msg">"Você está off-line, por favor conecte-se à internet."</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign In or Register</string>
+    <string name="action_sign_in_anonimo">Sign In Anonymously</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="welcome">Welcome!</string>
+    <string name="invalid_username">Invalid email address</string>
+    <string name="invalid_password">Password must be more than 5 characters</string>
+    <string name="login_failed">Login failed</string>
+    <string name="offline_msg">You are offline, please connect to the internet.</string>
 
-    <string name="login_efetuando">Efetuando Login</string>
-    <string name="login_conectando_servidor">Conectando ao servidor</string>
+    <string name="login_efetuando">Signing In</string>
+    <string name="login_conectando_servidor">Connecting to server</string>
     <!--Login Activity-->
-    <string name="login_activity_falha_ao_auth">Falha ao autenticar, verifique a senha.</string>
-    <string name="login_activity_falha_ao_criar_usuario">Falha ao criar usuário.</string>
+    <string name="login_activity_falha_ao_auth">Failed to authenticate, check password.</string>
+    <string name="login_activity_falha_ao_criar_usuario">Failed to create user.</string>
     <!--Tela Principal-->
-    <string name="title_activity_tela_principal">Minha Lista de Compras</string>
-    <string name="tv_progress_status_info_carregando">Carregando</string>
+    <string name="title_activity_tela_principal">My Shopping List</string>
+    <string name="tv_progress_status_info_carregando">Loading</string>
     <!--bottom Menu-->
-    <string name="menu_bottom_menu_item_despensa">Despensa</string>
-    <string name="menu_bottom_menu_item_lista">Minhas Listas</string>
-    <string name="menu_bottom_menu_item_buscar_lista">Procurar Lista Online</string>
-    <string name="menu_bottom_menu_item_novo_item">Novo Item</string>
+    <string name="menu_bottom_menu_item_despensa">Pantry</string>
+    <string name="menu_bottom_menu_item_lista">My Lists</string>
+    <string name="menu_bottom_menu_item_buscar_lista">Search Online List</string>
+    <string name="menu_bottom_menu_item_novo_item">New Item</string>
     <!--Menu -->
-    <string name="menu_item_sobre">Sobre</string>
+    <string name="menu_item_sobre">About</string>
     <string name="menu_item_logout">Logout</string>
     <string name="menu_item_login">Login</string>
-    <string name="menu_item_sair">Sair</string>
+    <string name="menu_item_sair">Exit</string>
     <!--Fragment Lista-->
-    <string name="fragment_lista_dialog_add_lista_titulo">Dê um nome para a sua nova lista</string>
+    <string name="fragment_lista_dialog_add_lista_titulo">Give a name to your new list</string>
     <string name="fragment_lista_dialog_add_lista_menssagem"> </string>
     <!--Fragment Lista Online-->
-    <string name="fragment_lista_online_edbuscar_hint">Procurar uma lista online...</string>
-    <string name="fragment_lista_online_btnbuscar_text">Buscar</string>
+    <string name="fragment_lista_online_edbuscar_hint">Search an online list...</string>
+    <string name="fragment_lista_online_btnbuscar_text">Search</string>
 
     <!--Dialog Add Lista-->
-    <string name="dialog_add_lista_ednome_hint">Nome da sua lista...</string>
-    <string name="dialog_add_lista_eddescricao_hint">Descrição...</string>
-    <string name="dialog_add_lista_botao_criar_texto">Criar</string>
+    <string name="dialog_add_lista_ednome_hint">Name of your list...</string>
+    <string name="dialog_add_lista_eddescricao_hint">Description...</string>
+    <string name="dialog_add_lista_botao_criar_texto">Create</string>
     <!--Rv Lista de Compras-->
-    <string name="rv_lista_de_compras_cv_tv_nome">Nome: </string>
-    <string name="rv_lista_de_compras_cv_tv_descricao">Descrição: </string>
-    <string name="rv_lista_de_compras_cv_tv_data_criacao">Data de Criação: </string>
-    <string name="rv_lista_de_compras_cv_tv_criador">Criada Por: </string>
-    <string name="rv_lista_de_compras_cv_btn_novo_item">Novo Item</string>
-    <string name="rv_lista_de_compras_tv_itens_titulo">Minha Lista</string>
-    <string name="rv_lista_de_compras_tv_itens_organizar_por">Organizar Por:</string>
-    <string name="rv_lista_de_compras_cv_btn_iniciar_compras">Iniciar Compras</string>
-    <string name="rv_lista_de_compras_cv_btn_pausar_compras">Pausar Compras</string>
+    <string name="rv_lista_de_compras_cv_tv_nome">Name: </string>
+    <string name="rv_lista_de_compras_cv_tv_descricao">Description: </string>
+    <string name="rv_lista_de_compras_cv_tv_data_criacao">Creation Date: </string>
+    <string name="rv_lista_de_compras_cv_tv_criador">Created By: </string>
+    <string name="rv_lista_de_compras_cv_btn_novo_item">New Item</string>
+    <string name="rv_lista_de_compras_tv_itens_titulo">My List</string>
+    <string name="rv_lista_de_compras_tv_itens_organizar_por">Organize By:</string>
+    <string name="rv_lista_de_compras_cv_btn_iniciar_compras">Start Shopping</string>
+    <string name="rv_lista_de_compras_cv_btn_pausar_compras">Pause Shopping</string>
+    <string name="rv_lista_de_compras_tv_descricao">Description: </string>
     <!--Rv Itens Lista de Compras-->
     <string name="rv_lista_de_compras_itens_cv_tv_nome">Item: </string>
-    <string name="rv_lista_de_compras_itens_cv_tv_quantidade">Quantidade: </string>
-    <string name="rv_lista_de_compras_itens_cv_tv_descricao">Descrição: </string>
-    <string name="rv_lista_de_compras_itens_cv_tv_preco">Preço... </string>
-    <string name="rv_lista_de_compras_itens_cv_tv_categoria">Categoria: </string>
-    <string name="rv_lista_de_compras_itens_cv_cb_concluido">Concluído! </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_quantidade">Quantity: </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_descricao">Description: </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_preco">Price... </string>
+    <string name="rv_lista_de_compras_itens_cv_tv_categoria">Category: </string>
+    <string name="rv_lista_de_compras_itens_cv_cb_concluido">Completed! </string>
     <!--Dialog novo Item-->
     <string name="dialog_novo_Item_editem_hint">Item...</string>
-    <string name="dialog_novo_Item_eddescricao_hint">Descrição...</string>
-    <string name="dialog_novo_Item_edquantidade_hint">Quantidade...</string>
-    <string name="dialog_novo_Item_botao_add_texto">Adicionar</string>
+    <string name="dialog_novo_Item_eddescricao_hint">Description...</string>
+    <string name="dialog_novo_Item_edquantidade_hint">Quantity...</string>
+    <string name="dialog_novo_Item_botao_add_texto">Add</string>
 
-    <string name="dialog_confirmar_compra_preco">Valor Total da Compra: R$</string>
+    <string name="dialog_confirmar_compra_preco">Total Purchase Value: R$</string>
     <!--Dialog descricao-->
-    <string name="dialog_sobre_descricao">Este é um app que permite elaborar listas de compras, utilize-o para controlar seus gastos mensais no supermercado.</string>
+    <string name="dialog_sobre_descricao">This is an app that allows you to create shopping lists, use it to control your monthly expenses at the supermarket.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Dialog Tela Principal Erro ao buscar dados-->
-    <string name="tela_principal_dialog_erro_buscar_dados_firebase_titulo">Erro!!!</string>
-    <string name="tela_principal_dialog_erro_buscar_dados_firebase_menssagem">Não foi possível buscar os dados online</string>
-    <string name="tela_principal_dialog_erro_buscar_dados_firebase_pos_btn_txt">Fechar</string>
+    <string name="tela_principal_dialog_erro_buscar_dados_firebase_titulo">Error!!!</string>
+    <string name="tela_principal_dialog_erro_buscar_dados_firebase_menssagem">Failed to fetch online data</string>
+    <string name="tela_principal_dialog_erro_buscar_dados_firebase_pos_btn_txt">Close</string>
 
     <!--Dialog Tela Principal offline-->
-    <string name="tela_principal_dialog_offline_titulo">Conecte-se!</string>
-    <string name="tela_principal_dialog_offline_menssagem">Para uma melhor experiencia com o aplicativo recomendamos que se conecte à internet.</string>
-    <string name="tela_principal_dialog_offline_pos_btn_txt">Fechar</string>
+    <string name="tela_principal_dialog_offline_titulo">Connect!</string>
+    <string name="tela_principal_dialog_offline_menssagem">For a better app experience, we recommend that you connect to the internet.</string>
+    <string name="tela_principal_dialog_offline_pos_btn_txt">Close</string>
 
     <!--Dialog Tela Principal Anonimo-->
-    <string name="tela_principal_dialog_anonimo_titulo">Você não está logado!</string>
-    <string name="tela_principal_dialog_anonimo_menssagem">Para uma experiencia completa com o aplicativo recomendamos que efetue login na tela inicial, basta informar um endereço de email e uma senha, uma conta de usuario será criada automaticamente.</string>
-    <string name="tela_principal_dialog_anonimo_pos_btn_txt">Fechar</string>
+    <string name="tela_principal_dialog_anonimo_titulo">You are not logged in!</string>
+    <string name="tela_principal_dialog_anonimo_menssagem">For a complete experience with the app, we recommend that you log in on the home screen, just provide an email address and a password, a user account will be created automatically.</string>
+    <string name="tela_principal_dialog_anonimo_pos_btn_txt">Close</string>
 
     <!--Dialog Tela Principal Lista online offline-->
-    <string name="tela_principal_dialog_lista_offline_titulo">Conecte-se!</string>
-    <string name="tela_principal_dialog_lista_offline_menssagem">Parece que você está desconectado. Não é possível acessar as listas online, Para acessar você deve estar conectado à internet.</string>
-    <string name="tela_principal_dialog_lista_offline_pos_btn_txt">Fechar</string>
+    <string name="tela_principal_dialog_lista_offline_titulo">Connect!</string>
+    <string name="tela_principal_dialog_lista_offline_menssagem">It seems you are disconnected. It is not possible to access online lists. To access, you must be connected to the internet.</string>
+    <string name="tela_principal_dialog_lista_offline_pos_btn_txt">Close</string>
 
     <!--Dialog Login  offline-->
-    <string name="login_dialog_offline_titulo">Erro de conexão!</string>
-    <string name="login_dialog_offline_menssagem">Uma conexão com a internet é necessária para efetuar login.</string>
-    <string name="login_dialog_offline_pos_btn_txt">Fechar</string>
+    <string name="login_dialog_offline_titulo">Connection Error!</string>
+    <string name="login_dialog_offline_menssagem">An internet connection is required to log in.</string>
+    <string name="login_dialog_offline_pos_btn_txt">Close</string>
 
     <!--RVListaComprasOnlineAdapter -->
-    <string name="RVListaComprasOnlineAdapter_toast_classificou_lista">Você classificou essa lista</string>
-    <string name="RVListaComprasOnlineAdapter_toast_adicionou_lista">Adicionado às minhas listas</string>
+    <string name="RVListaComprasOnlineAdapter_toast_classificou_lista">You classified this list</string>
+    <string name="RVListaComprasOnlineAdapter_toast_adicionou_lista">Added to my lists</string>
 
     <!--RVListaComprasAdapter-->
-    <string name="rvlistacomprasadapter_Add_novo_item_titulo">Adicione um Novo Item!</string>
-    <string name="rvlistacomprasadapter_Add_novo_item_menssagem">Adicione um novo item a sua lista de compras.</string>
+    <string name="rvlistacomprasadapter_Add_novo_item_titulo">Add a New Item!</string>
+    <string name="rvlistacomprasadapter_Add_novo_item_menssagem">Add a new item to your shopping list.</string>
 
-    <string name="rvlistacomprasadapter_campo_vazio_titulo">Erro, campo vazio!</string>
-    <string name="rvlistacomprasadapter_campo_vazio_menssagem">Os campos nome e quantidades do item devem ser preenchidos para se adicionar um novo item!</string>
+    <string name="rvlistacomprasadapter_campo_vazio_titulo">Error, empty field!</string>
+    <string name="rvlistacomprasadapter_campo_vazio_menssagem">The name and quantity fields of the item must be filled in to add a new item!</string>
     <string name="rvlistacomprasadapter_campo_vazio_pos_btn_txt">OK</string>
 
-    <string name="rvlistacomprasadapter_concluir_compra_titulo">Concluir Compra!</string>
-    <string name="rvlistacomprasadapter_concluir_compra_menssagem">Selecione Concluir para finalizar a compra ou pausar para continuar depois.</string>
+    <string name="rvlistacomprasadapter_concluir_compra_titulo">Complete Purchase!</string>
+    <string name="rvlistacomprasadapter_concluir_compra_menssagem">Select Complete to finalize the purchase or pause to continue later.</string>
 
-    <string name="rvlistacomprasadapter_confirmar_concluir_titulo">Tem certeza!</string>
-    <string name="rvlistacomprasadapter_confirmar_concluir_menssagem">Nem todos os itens foram concluídos ou nem todos os itens tiveram os preços atribuídos. Deseja concluir a compra assim mesmo?</string>
+    <string name="rvlistacomprasadapter_confirmar_concluir_titulo">Are you sure!</string>
+    <string name="rvlistacomprasadapter_confirmar_concluir_menssagem">Not all items were completed or not all items had prices assigned. Do you want to complete the purchase anyway?</string>
 
     <!--RVListaComprasItensAdapter-->
-    <string name="rvlistacomprasitensadapter_alterar_quantidade_titulo">Alterar Quantidade</string>
-    <string name="rvlistacomprasitensadapter_alterar_quantidade_menssagem">Altere a quantidade de itens que deseja comprar.</string>
+    <string name="rvlistacomprasitensadapter_alterar_quantidade_titulo">Change Quantity</string>
+    <string name="rvlistacomprasitensadapter_alterar_quantidade_menssagem">Change the quantity of items you want to buy.</string>
 
     <!--Dialog concluir compra-->
-    <string name="dialog_concluir_compras_rb_concluir">Concluir Compra</string>
-    <string name="dialog_concluir_compras_btn_confirmar">Confirmar</string>
-    <string name="dialog_concluir_compras_rb_pausar">Pausar Compra</string>
-    <string name="dialog__confirmar_concluir_btn_confirmar">Confirmar</string>
-    <string name="dialog__confirmar_concluir_cancelar">Cancelar</string>
-    <string name="dialog_editar_quantidade_ed_quantidade">Quantidade...</string>
-    <string name="dialog_editar_quantidade_btn_concluir">Concluir</string>
-    <string name="dialog_sobre_versao">Versão:</string>
-    <string name="fragment_lista_btn_recarregar_pagina">Recarregar pagina</string>
-    <string name="tela_principal_loading_toast">Carregando Informações</string>
-    <string name="login_activity_tv_bem_vindo">Bem vindo(a) ao Empta!</string>
-    <string name="login_activity_tvinfo_text">Você pode acessar o app fazendo login com um endereço de e-mail e uma senha ou entrar como um usuário anônimo. Se você não tiver uma conta cadastrada será criada uma conta automaticamente ao digitar o e-mail e a senha e clicar no botão entre ou registre-se. Ao entrar anonimamente algumas funcionalidades não estarão disponíveis.</string>
+    <string name="dialog_concluir_compras_rb_concluir">Complete Purchase</string>
+    <string name="dialog_concluir_compras_btn_confirmar">Confirm</string>
+    <string name="dialog_concluir_compras_rb_pausar">Pause Purchase</string>
+    <string name="dialog__confirmar_concluir_btn_confirmar">Confirm</string>
+    <string name="dialog__confirmar_concluir_cancelar">Cancel</string>
+    <string name="dialog_editar_quantidade_ed_quantidade">Quantity...</string>
+    <string name="dialog_editar_quantidade_btn_concluir">Complete</string>
+    <string name="dialog_sobre_versao">Version:</string>
+    <string name="fragment_lista_btn_recarregar_pagina">Reload page</string>
+    <string name="tela_principal_loading_toast">Loading Information</string>
+    <string name="login_activity_tv_bem_vindo">Welcome to Empta!</string>
+    <string name="login_activity_tvinfo_text">You can access the app by logging in with an email address and a password or by entering as an anonymous user. If you do not have a registered account, an account will be automatically created when you enter the email and password and click the login or register button.</string>
     <string name="title_activity_main">MainActivity</string>
 
     <!-- Strings used for fragments for navigation -->
@@ -145,44 +146,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
-        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
-        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
-        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
-        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
-        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
-        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
-        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
-        bibendum, vel congue leo egestas.\n\n
-        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
-        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
-        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
-        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
-        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
-        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
-        est.\n\n
-        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
-        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
-        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
-        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
-        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
-        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
-        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
-        convallis.\n\n
-        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
-        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
-        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
-    </string>
-
+    <string name="unidade_monetaria">$</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="fragment_compras_tv_minhas_compra">My Shoppins</string>
 </resources>

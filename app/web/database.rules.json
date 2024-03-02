@@ -1,0 +1,28 @@
+{
+  "rules": {
+    ".read": "auth.uid != null",
+    ".write": "auth.uid != null",
+    "Categorias":{
+      	".read": "auth.uid != null",
+      	".write": false
+    },
+       "Item":{
+      	".read": "auth.uid != null",
+      	".write": "auth.uid != null"
+    },      
+      "Lista":{
+				".read": "auth.uid != null",
+      	".write": "auth.uid != null"
+      },
+      "Tags":{
+      	".read": "auth.uid != null",
+     		".write": "auth.uid != null"
+    },
+      "Usuario":{
+        "$uid":{
+      		".read": "$uid===auth.uid",
+      		".write": "$uid===auth.uid"
+    	},
+    },
+  }
+}

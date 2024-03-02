@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentBottom="true"
-    tools:context=".Compras">
+    tools:context=".ui.Compras">
 
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="Minhas Compras"
+            android:text="@string/fragment_compras_tv_minhas_compra"
             android:textSize="21sp" />
 
         <androidx.recyclerview.widget.RecyclerView

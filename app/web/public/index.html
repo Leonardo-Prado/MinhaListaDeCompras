@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Empta - Minha Lista de Compras</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/policy.html">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="login-buttons">
+		<div id="login-status"></div>
+                <a id="btn_login" href="/login" class="btn btn-primary">Login</a>
+                <button id="logout-button" class="btn btn-danger" style="display: none;">Log Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Exclusão de conta</h4>
+                    </div>
+                    <div class="card-body">
+                        <h4>Deseja excluir sua conta:</h4>
+			<p>Caso deseje realmente excluir sua conta e todos os seus dados, é necessário apenas fazer o login com o seu email e senha, e então digitar o motivo na caixa de texto abaixo e clicar no botão <span><b>Solicitar Exclusão</b></span>. O login pode ser feito clicando no botão login no canto Superior Direito. </p>
+			<p>Lembre-se que ao excluir a sua conta, a mesma não poderá ser recuperada, assim como todos os seus dados da aplicação <span><b><i>Empta - </i>Minha Lista de Compras.</b></span></p>
+			<h6>Informe o motivo:</h6>
+                        <textarea class="form-control mb-2" id="excluir-motivo" rows="3" disabled></textarea>
+                        <button id="solicitar-exclusao" class="btn btn-danger" disabled>Solicitar Exclusão</button>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module">
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+        import {getDatabase, ref, child, get,update,set} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js"
+	import { getAuth, signInWithEmailAndPassword,onAuthStateChanged,deleteUser } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
+        // Initialize Firebase
+        const firebaseConfig = {
+
+  	    apiKey: "AIzaSyDtiIvpe7LARUUh8fSgnwUqyB1yRW8xkVQ",
+            authDomain: "minha-lista-de-compras.firebaseapp.com",
+            databaseURL: "https://minha-lista-de-compras.firebaseio.com",
+            projectId: "minha-lista-de-compras",
+            storageBucket: "minha-lista-de-compras.appspot.com",
+            messagingSenderId: "240499088374",
+            appId: "1:240499088374:web:24c9e44a92433bc95405d7",
+            measurementId: "G-VVXFD0BDGJ"
+        };
+        window.app = new initializeApp(firebaseConfig);
+	window.auth = getAuth(app)
+        window.database = new getDatabase(app);
+        window.ref = ref
+        window.child = child
+        window.get = get
+        window.update = update
+        window.set = set
+	
+        const loginStatus = document.getElementById('login-status');
+        const logoutButton = document.getElementById('logout-button');
+        const exclusaoMotivo = document.getElementById('excluir-motivo');
+        const solicitarExclusao = document.getElementById('solicitar-exclusao');
+        onAuthStateChanged(window.auth,(user) => {
+            if (user) {
+                loginStatus.innerHTML = `Welcome, ${user.email}!`;
+		logoutButton.style.display = 'block';
+		var btn_login = document.getElementById('btn_login');
+                btn_login.style.display = 'none';
+                exclusaoMotivo.removeAttribute('disabled');
+                solicitarExclusao.removeAttribute('disabled');
+		window.user = user
+            } else {
+                loginStatus.innerHTML = 'You are not logged in.';
+                logoutButton.style.display = 'none';
+		var btn_login = document.getElementById('btn_login');
+                btn_login.style.display = 'block';
+                exclusaoMotivo.setAttribute('disabled', true);
+                solicitarExclusao.setAttribute('disabled', true);
+            }
+        });
+
+        logoutButton.addEventListener('click', (e) => {
+            window.auth.signOut().then(() => {
+                console.log('User signed out');
+            }).catch((error) => {
+                console.error('Error signing out:', error);
+            });
+        });
+
+        solicitarExclusao.addEventListener('click', (e) => {
+            const motivo = exclusaoMotivo.value;
+            // Enviar o motivo para o servidor ou realizar outra ação aqui
+	    if (window.user != null) {
+		deleteUser(user).then(() => {
+            		console.log('Motivo da exclusão:', motivo);
+            		exclusaoMotivo.value = ''; // Limpar o campo de texto
+            		alert('Solicitação de exclusão enviada com sucesso!');
+		}).catch((error) => {
+            		alert('Falha ao excluir usuário:'+error);
+		});
+		}
+
+        });
+    </script>
+</body>
+</html>

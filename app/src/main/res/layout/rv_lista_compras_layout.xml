@@ -56,22 +56,11 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvDescricao"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="@string/rv_lista_de_compras_cv_tv_descricao"
-                        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                        android:visibility="gone" />
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tvCriadaPor"
@@ -89,6 +78,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|right|end"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
                             android:layout_weight="1.1"
                             android:text="@string/rv_lista_de_compras_cv_tv_data_criacao"
                             android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
@@ -96,14 +87,38 @@
 
                 </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/imbRemover"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:tint="@color/colorAccent"
-                    app:srcCompat="@drawable/ic_remove" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imbRemover"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:tint="@color/colorAccent"
+                        app:srcCompat="@drawable/ic_remove" />
+
+                    <ImageButton
+                        android:id="@+id/imbShare"
+                        android:layout_width="40dp"
+                        android:layout_height="46dp"
+                        android:tint="@color/colorAccent"
+                        app:srcCompat="@android:drawable/ic_menu_share" />
+                </LinearLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/rv_lista_de_compras_cv_tv_descricao"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                android:visibility="visible" />
 
         </LinearLayout>
 

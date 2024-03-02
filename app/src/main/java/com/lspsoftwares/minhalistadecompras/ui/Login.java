@@ -29,7 +29,6 @@ import com.lspsoftwares.minhalistadecompras.R;
 import com.lspsoftwares.minhalistadecompras.conn.ConnManager;
 import com.lspsoftwares.minhalistadecompras.entidades.Usuario;
 import com.lspsoftwares.minhalistadecompras.nucleo.estatico.VariaveisEstaticas;
-import com.lspsoftwares.minhalistadecompras.ui.firebase_ui.TelaPrincipal;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

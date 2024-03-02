@@ -109,15 +109,15 @@ public class RVComprasItensAdapter extends RecyclerView.Adapter {
         return unidade;
     }
     private int drawableFind(String nome,int defDraw) {
-        if(nome.toLowerCase().contains("frango"))
+        if(nome.toLowerCase().contains("frango")||nome.toLowerCase().contains("chicken"))
             return 15;
         else if (nome.toLowerCase().equals("banana"))
             return 16;
-        else if (nome.toLowerCase().equals("maça")||nome.toLowerCase().equals("maçã"))
+        else if (nome.toLowerCase().equals("maça")||nome.toLowerCase().equals("maçã")||nome.toLowerCase().equals("apple"))
             return 17;
-        else if (nome.toLowerCase().equals("laranja"))
+        else if (nome.toLowerCase().equals("laranja")||nome.toLowerCase().equals("oranje"))
             return 18;
-        else if (nome.toLowerCase().contains("refrigerante"))
+        else if (nome.toLowerCase().contains("refrigerante")||nome.toLowerCase().equals("coke")||nome.toLowerCase().equals("soda"))
             return 19;
         else if (nome.toLowerCase().equals("uva"))
             return 20;
@@ -125,7 +125,7 @@ public class RVComprasItensAdapter extends RecyclerView.Adapter {
             return 21;
         else if (nome.toLowerCase().contains("bolo"))
             return 22;
-        else if (nome.toLowerCase().contains("queijo"))
+        else if (nome.toLowerCase().contains("queijo")||nome.toLowerCase().contains("cheese"))
             return 23;
         else
             return defDraw;
